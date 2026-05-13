@@ -1,0 +1,351 @@
+ /* ══════════════════════════════════════════ */
+ /* PAGE LAYOUT */
+ /* ══════════════════════════════════════════ */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+ /* ══════════════════════════════════════════ */
+ /* LEFT PANEL */
+ /* ══════════════════════════════════════════ */
+.left-panel {
+  flex: 1;
+  background: #0c447c;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  background: #185fa5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b5d4f4;
+  font-size: 18px;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #e6f1fb;
+}
+
+.hero {
+  .secure-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #185fa5;
+    color: #85b7eb;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 500;
+    color: #e6f1fb;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 13px;
+    color: #85b7eb;
+    line-height: 1.7;
+  }
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #85b7eb;
+}
+
+.feature-icon {
+  width: 28px;
+  height: 28px;
+  background: #185fa5;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #85b7eb;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.copyright {
+  font-size: 11px;
+  color: #378add;
+}
+
+ /* ══════════════════════════════════════════ */
+ /* RIGHT PANEL */
+ /* ══════════════════════════════════════════ */
+.right-panel {
+  flex: 1.1;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+
+  @media (max-width: 768px) {
+    padding: 32px 24px;
+  }
+}
+
+.form-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+ /* ══════════════════════════════════════════ */
+ /* FORM ELEMENTS */
+ /* ══════════════════════════════════════════ */
+.form-header {
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #111827;
+    margin: 0 0 6px;
+  }
+
+  p {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+
+  label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+  }
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.link {
+  font-size: 13px;
+  color: #185fa5;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.divider-text {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.social-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+
+  .flex-1 {
+    flex: 1;
+  }
+}
+
+.bottom-link {
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 20px;
+
+  a {
+    color: #185fa5;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+ /* ══════════════════════════════════════════ */
+/* BACK BUTTON */
+ /* ══════════════════════════════════════════ */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: color 0.15s;
+
+  &:hover {
+    color: #185fa5;
+  }
+}
+
+ /* ══════════════════════════════════════════ */
+/* FORGOT SUCCESS STATE */
+ /* ══════════════════════════════════════════ */
+.success-state {
+  text-align: center;
+  padding: 20px 0;
+
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    background: #e6f1fb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+    color: #185fa5;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 4px;
+
+    strong {
+      color: #111827;
+    }
+  }
+
+  .hint {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 8px;
+  }
+}
+
+ /* ══════════════════════════════════════════ */
+/*  PRIMENG OVERRIDES — fixes input sizing */
+ /* ══════════════════════════════════════════ */
+::ng-deep {
+
+   /* ── p-iconfield full width */
+  .p-iconfield {
+    width: 100% !important;
+
+    .p-inputtext {
+      width: 100% !important;
+      height: 42px !important;
+      font-size: 14px !important;
+      border-radius: 8px !important;
+      box-sizing: border-box;
+    }
+  }
+
+   /* ── p-password full width — all levels */
+  .p-password {
+    width: 100% !important;
+    display: block !important;
+
+    /* inner wrapper div */
+    .p-password-input-wrapper {
+      width: 100% !important;
+      display: block !important;
+    }
+
+    /* actual input */
+    input.p-inputtext {
+      width: 100% !important;
+      height: 42px !important;
+      font-size: 14px !important;
+      border-radius: 8px !important;
+      box-sizing: border-box;
+    }
+  }
+
+  /* ── p-message full width */ 
+  .p-message {
+    width: 100% !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* ── p-button full width when styleClass has w-full */
+  .p-button.w-full {
+    width: 100% !important;
+    height: 42px !important;
+    font-size: 14px !important;
+    justify-content: center !important;
+  }
+
+  /* ── p-divider spacing */
+  .p-divider {
+    margin: 20px 0 !important;
+  }
+
+  /* ── p-checkbox align */
+  .p-checkbox {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+}

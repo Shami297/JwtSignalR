@@ -111,7 +111,7 @@ export class Login {
           detail:   'Login successful. Redirecting...',
           life:     2000
         });
-        setTimeout(() => this.router.navigate(['/dashboard']), 1500);
+        setTimeout(() => this.router.navigate(['/app/dashboard']), 1500);
       },
       error: (err) => {
         this.loading      = false;

@@ -28,23 +28,23 @@ public class AccountController(
             return BadRequest();
         }
 
-        if (!userService.IsValidUserCredentials(request.UserName, request.Password))
+        if (!userService.IsValidUserCredentials(request.Email, request.Password))
         {
             return Unauthorized();
         }
 
-        var role = userService.GetUserRole(request.UserName);
+        var role = userService.GetUserRole(request.Email);
         var claims = new[]
         {
-            new Claim(ClaimTypes.Name,request.UserName),
+            new Claim(ClaimTypes.Name,request.Email),
             new Claim(ClaimTypes.Role, role)
         };
 
-        var jwtResult = jwtAuthManager.GenerateTokens(request.UserName, claims, DateTime.Now);
-        logger.LogInformation($"User [{request.UserName}] logged in the system.");
+        var jwtResult = jwtAuthManager.GenerateTokens(request.Email, claims, DateTime.Now);
+        logger.LogInformation($"User [{request.Email}] logged in the system.");
         return Ok(new LoginResult
         {
-            UserName = request.UserName,
+            UserName = request.Email,
             Role = role,
             AccessToken = jwtResult.AccessToken,
             RefreshToken = jwtResult.RefreshToken.TokenString
@@ -180,8 +180,8 @@ public class AccountController(
 public class LoginRequest
 {
     [Required]
-    [JsonPropertyName("username")]
-    public string UserName { get; set; } = string.Empty;
+    [JsonPropertyName("email")]
+    public string Email { get; set; } = string.Empty;
 
     [Required]
     [JsonPropertyName("password")]

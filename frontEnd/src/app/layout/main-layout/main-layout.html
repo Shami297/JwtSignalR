@@ -1,1 +1,129 @@
-<p>main-layout works!</p>
+<p-toast position="top-right" />
+
+<div class="app-shell" [class.sidebar-collapsed]="sidebarCollapsed">
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MOBILE OVERLAY                             -->
+  <!-- ══════════════════════════════════════════ -->
+  @if (mobileSidebarOpen) {
+    <div class="mobile-overlay" (click)="toggleMobileSidebar()"></div>
+  }
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SIDEBAR                                    -->
+  <!-- ══════════════════════════════════════════ -->
+  <aside class="sidebar" [class.mobile-open]="mobileSidebarOpen">
+    <!-- Brand -->
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <i class="pi pi-briefcase"></i>
+      </div>
+      @if (!sidebarCollapsed) {
+        <span class="brand-name">ATS Pro</span>
+      }
+    </div>
+
+    <p-divider styleClass="sidebar-divider" />
+
+    <!-- Nav Items -->
+    <nav class="sidebar-nav">
+      @for (item of navItems; track item.route) {
+        @if (canSeeItem(item)) {
+          <div
+            class="nav-item"
+            [class.active]="isActive(item.route)"
+            (click)="navigateTo(item.route)"
+            [pTooltip]="sidebarCollapsed ? item.label : ''"
+            tooltipPosition="right"
+          >
+            <i [class]="item.icon"></i>
+            @if (!sidebarCollapsed) {
+              <span class="nav-label">{{ item.label }}</span>
+            }
+            @if (!sidebarCollapsed && item.badge) {
+              <span class="nav-badge">{{ item.badge }}</span>
+            }
+          </div>
+        }
+      }
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <p-divider styleClass="sidebar-divider" />
+
+      <div class="sidebar-user" [class.collapsed]="sidebarCollapsed">
+        <p-avatar [label]="userInitials()" shape="circle" styleClass="user-avatar" />
+        @if (!sidebarCollapsed) {
+          <div class="user-info">
+            <span class="user-name">{{ currentUser()?.fullName }}</span>
+            <span class="user-role">{{ currentUser()?.roles?.[0] }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MAIN CONTENT AREA                          -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="main-area">
+    <!-- TOP NAVBAR -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <p-button
+          icon="pi pi-bars"
+          variant="text"
+          severity="secondary"
+          (onClick)="onMenuToggle()"
+          styleClass="toggle-btn"
+          pTooltip="Toggle sidebar"
+          tooltipPosition="bottom"
+        />
+      </div>
+
+      <div class="navbar-right">
+        <!-- Notifications -->
+        <div class="notif-wrap">
+          <p-button
+            icon="pi pi-bell"
+            variant="text"
+            severity="secondary"
+            styleClass="icon-btn"
+            pTooltip="Notifications"
+            tooltipPosition="bottom"
+          />
+          <span class="notif-dot">3</span>
+        </div>
+
+        <!-- Help -->
+        <p-button
+          icon="pi pi-question-circle"
+          variant="text"
+          severity="secondary"
+          styleClass="icon-btn"
+          pTooltip="Help"
+          tooltipPosition="bottom"
+        />
+
+        <div class="navbar-divider"></div>
+
+        <!-- Profile -->
+        <div class="profile-trigger" (click)="profileMenu.toggle($event)">
+          <p-avatar [label]="userInitials()" shape="circle" styleClass="navbar-avatar" />
+          <div class="profile-info">
+            <span class="profile-name">{{ currentUser()?.fullName }}</span>
+            <span class="profile-role">{{ currentUser()?.roles?.[0] }}</span>
+          </div>
+          <i class="pi pi-chevron-down profile-chevron"></i>
+        </div>
+
+        <p-menu #profileMenu [model]="profileMenuItems" [popup]="true" />
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

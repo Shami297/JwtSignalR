@@ -153,6 +153,7 @@
   flex-direction: column;
   gap: 6px;
   margin-bottom: 16px;
+  max-width: 250px;
 
   label {
     font-size: 13px;

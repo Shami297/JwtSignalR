@@ -18,7 +18,7 @@ export const routes: Routes = [
 
   // Protected routes — inside main layout
   {
-    path: '',
+    path: 'app',
     canActivate: [authGuard],          // ← guards ALL children
     loadComponent: () =>
       import('./layout/main-layout/main-layout')

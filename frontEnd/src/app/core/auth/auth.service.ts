@@ -26,7 +26,7 @@ interface JwtPayload {
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private apiUrl = `${environment.apiUrl}/auth`;
+  private apiUrl = `${environment.apiUrl}/Account`;
 
   // ── Signals — reactive state (Angular 21 modern approach)
   private _currentUser = signal<UserInfo | null>(null);
@@ -161,9 +161,10 @@ export class AuthService {
 
   private handleAuthSuccess(res: AuthResponse): void {
     // Save tokens to localStorage
+    
     localStorage.setItem(environment.tokenKey,   res.accessToken);
     localStorage.setItem(environment.refreshKey, res.refreshToken);
-
+    // console.log(environment.tokenKey);
     // Decode token to get user info
     const user = this.decodeUserFromToken(res.accessToken);
 
